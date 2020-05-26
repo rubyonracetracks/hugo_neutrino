@@ -41,20 +41,16 @@ echo '-----------------------'
 echo "hugo new site $APP_NAME"
 cd $DIR_MAIN/new_apps && hugo new site $APP_NAME
 
-echo '------------------------'
-echo 'Adding the minimal theme'
-cd $DIR_APP && git init
-cd $DIR_APP && git submodule add https://github.com/calintat/minimal.git themes/minimal
-cd $DIR_APP && git submodule init
-cd $DIR_APP && git submodule update
-
 # WICHTIG/LEGACY/bash: Adding nukec.sh and nuke.sh
 cp $DIR_MAIN/nukec.sh $DIR_APP
 cp $DIR_MAIN/nuke.sh $DIR_APP
 
 # Add the mod directory and mod scripts to .gitignore
+echo '' > $DIR_APP/.gitignore
+echo '# Hugo build products' >> $DIR_APP/.gitignore
+echo 'public' >> $DIR_APP/.gitignore
 echo '' >> $DIR_APP/.gitignore
-echo '# Files and directories from Docusaurus Neutrino' >> $DIR_APP/.gitignore
+echo '# Files and directories from Hugo Neutrino' >> $DIR_APP/.gitignore
 echo 'mod/*' >> $DIR_APP/.gitignore
 echo 'mod-*' >> $DIR_APP/.gitignore
 echo 'mod_app.sh' >> $DIR_APP/.gitignore
@@ -68,7 +64,7 @@ echo "cp -R $DIR_MAIN/mod $DIR_APP"
 cp -R $DIR_MAIN/mod $DIR_APP
 
 # Modify the new app
-# cd $DIR_APP && bash mod_app.sh '01'
+cd $DIR_APP && bash mod_app.sh '01'
 # cd $DIR_APP && bash mod_app.sh '02'
 # cd $DIR_APP && bash mod_app.sh '03'
 # cd $DIR_APP && bash mod_app.sh '04'
