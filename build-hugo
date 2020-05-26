@@ -1,0 +1,91 @@
+#!/bin/bash
+set -e
+
+APP_NAME=$1
+
+DIR_MAIN=$PWD
+
+DIR_APP=$DIR_MAIN/new_apps/$APP_NAME
+
+echo '----------'
+echo 'go version'
+go version
+
+echo '------------'
+echo 'hugo version'
+hugo version
+
+echo '-------------'
+echo 'git --version'
+git --version
+
+echo '-------------------'
+echo 'cat /etc/os-release'
+cat /etc/os-release
+
+# Provide Git credentials
+git config --global user.email 'rubyist@jasonhsu.com'
+git config --global user.name 'Jason Hsu'
+
+DATE_START=$(date +%s)
+
+# Removing the old app (if necessary)
+if [ -d "$DIR_APP" ]; then
+  rm -rf $DIR_APP
+fi
+
+mkdir -p new_apps
+
+# Creating the new Hugo app
+echo '-----------------------'
+echo "hugo new site $APP_NAME"
+cd $DIR_MAIN/new_apps && hugo new site $APP_NAME
+
+echo '------------------------'
+echo 'Adding the minimal theme'
+cd $DIR_APP && git init
+cd $DIR_APP && git submodule add https://github.com/calintat/minimal.git themes/minimal
+cd $DIR_APP && git submodule init
+cd $DIR_APP && git submodule update
+
+# WICHTIG/LEGACY/bash: Adding nukec.sh and nuke.sh
+cp $DIR_MAIN/nukec.sh $DIR_APP
+cp $DIR_MAIN/nuke.sh $DIR_APP
+
+# Add the mod directory and mod scripts to .gitignore
+echo '' >> $DIR_APP/.gitignore
+echo '# Files and directories from Docusaurus Neutrino' >> $DIR_APP/.gitignore
+echo 'mod/*' >> $DIR_APP/.gitignore
+echo 'mod-*' >> $DIR_APP/.gitignore
+echo 'mod_app.sh' >> $DIR_APP/.gitignore
+
+# Copy mod_app.sh to the new app's root directory
+echo "cp $DIR_MAIN/mod_app.sh $DIR_APP"
+cp $DIR_MAIN/mod_app.sh $DIR_APP
+
+# Copy the mod directory to the new app's root directory
+echo "cp -R $DIR_MAIN/mod $DIR_APP"
+cp -R $DIR_MAIN/mod $DIR_APP
+
+# Modify the new app
+# cd $DIR_APP && bash mod_app.sh '01'
+# cd $DIR_APP && bash mod_app.sh '02'
+# cd $DIR_APP && bash mod_app.sh '03'
+# cd $DIR_APP && bash mod_app.sh '04'
+
+# Remove the mod* files from the new app
+rm -rf $DIR_APP/mod
+rm $DIR_APP/mod*
+
+DATE_END=$(date +%s)
+
+T_SEC=$((DATE_END-DATE_START))
+
+echo '##########################################'
+echo 'The new app has been created from scratch!'
+echo 'It is in'
+echo "$DIR_APP"
+echo ''
+echo "Time used:"
+echo "$((T_SEC/60)) minutes and $((T_SEC%60)) seconds"
+echo ''

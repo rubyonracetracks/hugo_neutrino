@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  docusaurus:
+    build: .
+    ports:
+      - 3000:3000
+      - 35729:35729
+    volumes:
+      - .:/home/node/neutrino
+    working_dir: /home/node/neutrino/website
+    user: node
+    command:
+      - yarn
+      - start
