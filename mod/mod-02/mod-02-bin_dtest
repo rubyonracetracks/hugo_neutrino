@@ -1,10 +1,6 @@
 #!/bin/bash
 set -e
 
-echo '------------'
-echo 'yarn install'
-docker-compose run --rm docusaurus yarn install
-
-echo '----------'
-echo 'yarn build'
-docker-compose run --rm docusaurus yarn build
+echo '-------'
+echo 'hugo -D'
+docker-compose run --rm hugo hugo -D

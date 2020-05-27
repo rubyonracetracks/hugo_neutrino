@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo '-------------'
-echo 'yarn outdated'
-docker-compose run --rm docusaurus yarn outdated

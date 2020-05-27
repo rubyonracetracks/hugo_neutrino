@@ -18,10 +18,7 @@ cd $DIR_MAIN && git submodule init
 cd $DIR_MAIN && git submodule update
 cd $DIR_MAIN && git commit -m "Added minimal theme"
 
-# echo '-------'
-# echo 'hugo -D'
-# cd $DIR_MAIN && hugo -D
-
-# cd $DIR_MAIN && git init
-# cd $DIR_MAIN && git add .
-# cd $DIR_MAIN && git commit -m "Added minimal theme"
+echo '----------------------------------------------'
+echo 'Adding the initial minimal theme configuration'
+cp $DIR_MAIN/themes/minimal/exampleSite/config.toml $DIR_MAIN
+cp -R $DIR_MAIN/themes/minimal/exampleSite/content $DIR_MAIN

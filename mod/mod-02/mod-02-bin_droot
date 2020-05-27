@@ -15,4 +15,4 @@ function cleanup {
 
 trap cleanup EXIT
 
-docker-compose run --rm -u root docusaurus bash
+docker-compose run --rm -u root hugo bash

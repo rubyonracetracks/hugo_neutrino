@@ -1,6 +1,0 @@
-#!/bin/bash
-set -e
-
-echo '----------'
-echo 'yarn build'
-docker-compose run --rm docusaurus yarn build
