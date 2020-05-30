@@ -23,4 +23,3 @@ read CONT
 
 mkdir -p log
 bash exec-main.sh $DIR_NAME | tee log/main-$DATE.txt
-cd $DIR_APP && bash build.sh
