@@ -7,7 +7,7 @@ This app was created with the aid of Hugo Neutrino, which automatically creates 
 * Use the "git clone" command to download this repository to your local machine.
 * Within the root directory of this project, enter the command "bash build.sh; bash server.sh" to set up this app and run the Hugo server afterward in this terminal tab.  In the end, you will be able to view this app at http://localhost:1313.
 * Create a second terminal tab for entering commands.
-* Follow the instructions in the [README-to_do.md](README-to_do.md) file to deploy this app, add continuous integration, and take care of other routine details.
+* Follow the instructions in the README-to_do.txt file to deploy this app, add continuous integration, and take care of other routine details.
 
 ## Other Important Commands
 * `bash nuke.sh`: This command deletes all Docker images and containers.  It's handy for resetting your Docker setup.
