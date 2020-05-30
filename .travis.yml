@@ -1,4 +1,4 @@
-dist: bionic
+dist: focal
 
 before_script:
   - sudo apt-get install -y bash hugo
