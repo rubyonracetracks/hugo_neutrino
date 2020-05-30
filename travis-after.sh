@@ -6,18 +6,4 @@ set -e
 
 cd new_apps/tmp1/website
 
-echo '------------'
-echo 'yarn install'
-yarn install
-
-echo '--------------'
-echo 'yarn run build'
-yarn run build
-
-echo '----------'
-echo 'yarn audit'
-yarn audit
-
-echo '-------------'
-echo 'yarn outdated'
-yarn outdated
+hugo -D
