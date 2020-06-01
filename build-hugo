@@ -79,9 +79,11 @@ T_SEC=$((DATE_END-DATE_START))
 
 echo '##########################################'
 echo 'The new app has been created from scratch!'
-echo 'It is in'
+echo 'It is at'
 echo "$DIR_APP"
 echo ''
 echo "Time used:"
 echo "$((T_SEC/60)) minutes and $((T_SEC%60)) seconds"
 echo ''
+echo 'Instructions on what to do next are in'
+echo "$DIR_APP/README-to_do.txt"
