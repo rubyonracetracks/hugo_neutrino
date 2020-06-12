@@ -1,7 +1,7 @@
-FROM golang:latest
+FROM debian:bullseye
 MAINTAINER Ruby on Racetracks
 
-RUN go version && cat /etc/os-release && \
+RUN cat /etc/os-release && \
     apt-get update && apt-get upgrade -y && \
     apt-get install -y bash git hugo && \
     adduser --disabled-password --gecos '' winner
