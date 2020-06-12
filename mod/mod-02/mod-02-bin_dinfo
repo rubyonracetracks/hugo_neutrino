@@ -1,10 +1,6 @@
 #!/bin/bash
 set -e
 
-echo '----------'
-echo 'go version'
-docker-compose run --rm hugo go version
-
 echo '--------------'
 echo 'hugo version'
 docker-compose run --rm hugo hugo version

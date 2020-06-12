@@ -7,10 +7,6 @@ DIR_MAIN=$PWD
 
 DIR_APP=$DIR_MAIN/new_apps/$APP_NAME
 
-echo '----------'
-echo 'go version'
-go version
-
 echo '------------'
 echo 'hugo version'
 hugo version
