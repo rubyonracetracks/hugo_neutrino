@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:testing
 MAINTAINER Ruby on Racetracks
 
 RUN cat /etc/os-release && \
